@@ -15,12 +15,12 @@
  */
 package com.alibaba.csp.sentinel.dashboard.config;
 
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.springframework.lang.NonNull;
+
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  * <p>Dashboard local config support.</p>
@@ -63,6 +63,15 @@ public class DashboardConfig {
      * Auto remove unhealthy machine after specific period in millisecond.
      */
     public static final String CONFIG_AUTO_REMOVE_MACHINE_MILLIS = "sentinel.dashboard.autoRemoveMachineMillis";
+
+
+    public static final String CONFIG_NACOS_SERVER_URL = "sentinel.dashboard.nacos.server";
+
+    public static final String CONFIG_NACOS_SERVER_NAMESPACE = "sentinel.dashboard.nacos.namespace";
+
+    public static final String CONFIG_NACOS_SERVER_USAERNAME = "sentinel.dashboard.nacos.username";
+
+    public static final String CONFIG_NACOS_SERVER_PASSWORD = "sentinel.dashboard.nacos.password";
 
     private static final ConcurrentMap<String, Object> cacheMap = new ConcurrentHashMap<>();
     
@@ -136,5 +145,21 @@ public class DashboardConfig {
     
     public static void clearCache() {
         cacheMap.clear();
+    }
+
+    public static String getNacosServer() {
+        return getConfigStr(CONFIG_NACOS_SERVER_URL);
+    }
+
+    public static String getNacosNamespace() {
+        return getConfigStr(CONFIG_NACOS_SERVER_NAMESPACE);
+    }
+
+    public static String getNacosUsername() {
+        return getConfigStr(CONFIG_NACOS_SERVER_USAERNAME);
+    }
+
+    public static String getNacosPassword() {
+        return getConfigStr(CONFIG_NACOS_SERVER_PASSWORD);
     }
 }
